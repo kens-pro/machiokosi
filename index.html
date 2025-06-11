@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wrapi®（ラピ）地域おこし協力隊向けラッピングピアノLP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* リセットCSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 基本スタイル */
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+            margin-bottom: 0.8em;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 1.5em;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: #4CAF50;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            background-color: #fff;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* ボタン共通スタイル */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #007bff;
+        }
+        .btn-secondary:hover {
+            background-color: #0069d9;
+        }
+
+        /* 1. ファーストビュー（ヒーローセクション） */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/1500x800/87CEEB/FFFFFF?text=Lapping+Piano+Hero') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 150px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            margin-bottom: 40px;
+            max-width: 800px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-image-slider {
+            /* JavaScriptなしで簡易的に複数画像を見せるためのスタイル。スライダー機能自体は提供しません。 */
+            margin-top: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        .hero-image-slider img {
+            width: 280px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* 2. 課題共感セクション */
+        .problems {
+            background-color: #f0f8ff;
+            text-align: center;
+        }
+
+        .problems ul {
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        .problems li {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 5px solid #FFC107;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 1.1em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+        }
+        .problems li::before {
+            content: '✗ ';
+            color: #FFC107;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .problems .empathy-message {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #555;
+            margin-top: 40px;
+        }
+
+        /* 3. ソリューション提示セクション */
+        .solutions .value-propositions {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .solutions .value-item {
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            background-color: #e8f5e9;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .solutions .value-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .solutions .value-item .icon {
+            font-size: 3em;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+
+        .solutions .value-item h3 {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .solutions .value-item p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        .solutions .core-message {
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-top: 40px;
+            background-color: #f0f8f0;
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid #a5d6a7;
+        }
+
+        /* 4. サービス紹介セクション */
+        .service-intro .description {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .service-intro .description img {
+            max-width: 450px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .service-intro .description div {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .service-intro .features {
+            background-color: #e3f2fd;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+        }
+        .service-intro .features h3 {
+            text-align: center;
+            font-size: 1.6em;
+            margin-bottom: 25px;
+            color: #1976D2;
+        }
+        .service-intro .features ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 0;
+        }
+        .service-intro .features li {
+            background-color: #fff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            border-left: 4px solid #1976D2;
+        }
+        .service-intro .features li::before {
+            content: '✔️ ';
+            color: #1976D2;
+            font-weight: bold;
+        }
+
+        /* 5. 導入事例セクション */
+        .case-studies {
+            background-color: #fffaf0;
+        }
+        .case-studies .case-item {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+        .case-studies .case-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        .case-studies .case-item img {
+            max-width: 450px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .case-studies .case-item .text-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        .case-studies .case-item h3 {
+            color: #E67E22;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        .case-studies .case-item p {
+            margin-bottom: 10px;
+        }
+        .case-studies .case-item ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+        .case-studies .case-item ul li {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .case-studies .case-item ul li span {
+            font-weight: normal;
+            color: #555;
+        }
+
+        .case-studies .impact-metrics {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 60px;
+            text-align: center;
+        }
+        .case-studies .metric-item {
+            flex: 1;
+            min-width: 200px;
+            background-color: #e0f2f7;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .case-studies .metric-item .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #3F51B5;
+            margin-bottom: 5px;
+        }
+        .case-studies .metric-item .label {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        /* 6. 活用シーン・親和性セクション */
+        .affinity {
+            background-color: #f2f7f2;
+        }
+        .affinity .activity-areas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .affinity .area-item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .affinity .area-item:hover {
+            transform: translateY(-5px);
+        }
+        .affinity .area-item .icon {
+            font-size: 2.5em;
+            color: #28A745;
+            margin-bottom: 15px;
+        }
+        .affinity .area-item h3 {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .affinity .area-item ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        .affinity .area-item ul li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        .affinity .area-item ul li::before {
+            content: '• ';
+            color: #28A745;
+            position: absolute;
+            left: -15px;
+        }
+
+        /* 7. サポート内容セクション */
+        .support {
+            background-color: #f8f8f8;
+        }
+        .support .support-sections {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        .support .support-block {
+            flex: 1;
+            min-width: 300px;
+            max-width: 48%; /* 2列レイアウト */
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+        .support .support-block h3 {
+            font-size: 1.6em;
+            color: #6C757D;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+        .support .support-block ul {
+            list-style: none;
+            padding: 0;
+        }
+        .support .support-block li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #555;
+        }
+        .support .support-block li::before {
+            content: '✅ ';
+            color: #28A745;
+            margin-right: 5px;
+            font-weight: bold;
+        }
+
+        /* 8. 料金・導入プロセスセクション */
+        .process {
+            background-color: #e0f7fa;
+        }
+        .process .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .process .step-item {
+            flex: 1;
+            min-width: 220px;
+            max-width: 280px;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            padding-top: 60px; /* アイコン分のスペース */
+        }
+        .process .step-item .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #00BCD4;
+            color: #fff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5em;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .process .step-item h3 {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .process .step-item p {
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .process .price-estimates {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-top: 40px;
+        }
+        .process .price-estimates h3 {
+            font-size: 1.8em;
+            color: #F44336;
+            margin-bottom: 20px;
+        }
+        .process .price-estimates ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+        .process .price-estimates li {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #444;
+        }
+        .process .price-estimates li strong {
+            color: #F44336;
+        }
+        .process .price-estimates p {
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        /* 9. よくある質問（FAQ）セクション */
+        .faq {
+            background-color: #fcfcfc;
+        }
+        .faq details {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .faq summary {
+            font-weight: bold;
+            padding: 20px;
+            cursor: pointer;
+            outline: none;
+            display: block;
+            position: relative;
+        }
+        .faq summary::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            transition: transform 0.2s ease;
+        }
+        .faq details[open] summary::after {
+            content: '-';
+            transform: translateY(-50%) rotate(0deg); /* +/- のアニメーション */
+        }
+        .faq details[open] summary {
+            border-bottom: 1px solid #eee;
+        }
+        .faq .faq-content {
+            padding: 0 20px 20px;
+            color: #555;
+        }
+
+        /* 10. 成功ストーリーセクション */
+        .success-story {
+            background-color: #f0f7f0;
+            text-align: center;
+        }
+        .success-story .story-intro {
+            font-size: 1.3em;
+            color: #555;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+        .success-story h3 {
+            font-size: 1.8em;
+            color: #333;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        .success-story .story-points {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .success-story .story-point {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        .success-story .story-point h4 {
+            font-size: 1.3em;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+        .success-story .emotion-quotes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        .success-story .quote-item {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            background-color: #e8f5e9;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #81C784;
+            text-align: left;
+            font-style: italic;
+            color: #444;
+            position: relative;
+        }
+        .success-story .quote-item::before {
+            content: '“';
+            font-family: serif;
+            font-size: 3em;
+            color: rgba(129, 199, 132, 0.5);
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            line-height: 1;
+        }
+        .success-story .quote-item p {
+            margin-top: 20px;
+        }
+
+        /* 11. 信頼性・実績セクション */
+        .trust {
+            background-color: #fcfcfc;
+        }
+        .trust .company-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .trust .company-block {
+            flex: 1;
+            min-width: 300px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+        .trust .company-block h3 {
+            font-size: 1.6em;
+            color: #3F51B5;
+            margin-bottom: 15px;
+        }
+        .trust .company-block p {
+            margin-bottom: 10px;
+        }
+        .trust .company-block ul {
+            list-style: none;
+            padding: 0;
+        }
+        .trust .company-block ul li {
+            margin-bottom: 5px;
+        }
+        .trust .achievements {
+            background-color: #e8eaf6;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+        }
+        .trust .achievements h3 {
+            text-align: center;
+            font-size: 1.6em;
+            margin-bottom: 25px;
+            color: #303F9F;
+        }
+        .trust .achievements ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 0;
+        }
+        .trust .achievements li {
+            background-color: #fff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            border-left: 4px solid #3F51B5;
+        }
+        .trust .achievements li::before {
+            content: '🏆 ';
+            color: #FFD700; /* Gold */
+            margin-right: 5px;
+        }
+
+        /* 12. 行動喚起セクション */
+        .cta-final {
+            background-color: #4CAF50;
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .cta-final h2 {
+            color: #fff;
+            font-size: 2.8em;
+            margin-bottom: 30px;
+        }
+        .cta-final h2::after {
+            background-color: #fff;
+        }
+        .cta-final p {
+            font-size: 1.4em;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-final .contact-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        .cta-final .btn {
+            background-color: #FFC107;
+            color: #333;
+            font-size: 1.2em;
+            padding: 18px 35px;
+        }
+        .cta-final .btn:hover {
+            background-color: #ffb300;
+        }
+        .cta-final .contact-info {
+            font-size: 1.1em;
+        }
+        .cta-final .contact-info p {
+            margin-bottom: 10px;
+            font-size: 1em; /* Override default p font-size */
+        }
+        .cta-final .contact-info a {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .cta-final .contact-info a:hover {
+            color: #eee;
+        }
+
+        /* 13. フッター */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        footer .footer-message {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        footer .footer-links {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px 30px;
+        }
+        footer .footer-links li a {
+            color: #ecf0f1;
+            font-weight: normal;
+        }
+        footer .footer-links li a:hover {
+            color: #4CAF50;
+        }
+        footer .social-links {
+            margin-bottom: 20px;
+        }
+        footer .social-links a {
+            color: #ecf0f1;
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        footer .social-links a:hover {
+            color: #4CAF50;
+        }
+        footer p {
+            margin-top: 15px;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            h2 {
+                font-size: 1.8em;
+                margin-bottom: 1em;
+            }
+            .hero {
+                padding: 100px 20px;
+            }
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            .hero p {
+                font-size: 1.1em;
+            }
+            .hero-cta {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero-image-slider img {
+                width: 200px;
+                height: 130px;
+            }
+
+            .problems li {
+                font-size: 1em;
+            }
+            .problems .empathy-message {
+                font-size: 1.1em;
+            }
+
+            .solutions .value-propositions {
+                flex-direction: column;
+                align-items: center;
+            }
+            .solutions .value-item {
+                max-width: 90%;
+            }
+            .solutions .core-message {
+                font-size: 1.2em;
+                padding: 20px;
+            }
+
+            .service-intro .description {
+                flex-direction: column;
+            }
+            .service-intro .description img {
+                max-width: 100%;
+            }
+            .service-intro .features ul {
+                grid-template-columns: 1fr;
+            }
+
+            .case-studies .case-item {
+                flex-direction: column;
+            }
+            .case-studies .case-item:nth-child(odd) {
+                flex-direction: column; /* Odd rows also stack */
+            }
+            .case-studies .case-item img {
+                max-width: 100%;
+            }
+            .case-studies .impact-metrics {
+                flex-direction: column;
+            }
+
+            .affinity .activity-areas {
+                grid-template-columns: 1fr;
+            }
+
+            .support .support-sections {
+                flex-direction: column;
+                align-items: center;
+            }
+            .support .support-block {
+                max-width: 90%;
+            }
+
+            .process .steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            .process .step-item {
+                max-width: 90%;
+            }
+            .process .price-estimates {
+                padding: 30px 20px;
+            }
+
+            .success-story .story-points,
+            .success-story .emotion-quotes {
+                flex-direction: column;
+                align-items: center;
+            }
+            .success-story .story-point,
+            .success-story .quote-item {
+                max-width: 90%;
+            }
+
+            .trust .company-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            .trust .company-block {
+                max-width: 90%;
+            }
+            .trust .achievements ul {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-final h2 {
+                font-size: 2em;
+            }
+            .cta-final p {
+                font-size: 1.1em;
+            }
+            .cta-final .contact-buttons {
+                flex-direction: column;
+            }
+            .cta-final .btn {
+                width: 100%;
+            }
+
+            footer .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. ファーストビュー（ヒーローセクション） -->
+    <section class="hero">
+        <div class="container">
+            <h1>地域にひらく音と彩りの場 <br>〜ラッピングピアノで、地域に"物語"を〜</h1>
+            <p>地域おこし協力隊の皆さまへ<br>人が集まり、写真を撮り、思いを寄せる。それが「ラッピングピアノ」の持つ力です。</p>
+            <div class="hero-cta">
+                <a href="#case-studies" class="btn">導入事例を見る</a>
+                <a href="#cta-final" class="btn btn-secondary">無料相談に申し込む</a>
+            </div>
+            <div class="hero-image-slider">
+                <img src="https://via.placeholder.com/300x200/FFD700/000000?text=Piano+Scene+1" alt="ラッピングピアノ設置事例1">
+                <img src="https://via.placeholder.com/300x200/90EE90/000000?text=Piano+Scene+2" alt="ラッピングピアノ設置事例2">
+                <img src="https://via.placeholder.com/300x200/ADD8E6/000000?text=Piano+Scene+3" alt="ラッピングピアノ設置事例3">
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 課題共感セクション -->
+    <section class="problems">
+        <div class="container">
+            <h2>地域おこし協力隊として、こんなお悩みありませんか？</h2>
+            <ul>
+                <li>地域の魅力を発信したいが、インパクトのあるコンテンツがない</li>
+                <li>世代を超えて楽しめる場づくりに苦労している</li>
+                <li>SNSで話題になる仕掛けが思いつかない</li>
+                <li>文化的な取り組みで地域を活性化したいが方法がわからない</li>
+                <li>予算が限られる中で効果的な施策を探している</li>
+            </ul>
+            <p class="empathy-message">「地域の個性を活かしながら、多世代が自然に集まる場所を作るのは簡単ではありません。でも、そんな課題を解決する方法があります。」</p>
+        </div>
+    </section>
+
+    <!-- 3. ソリューション提示セクション -->
+    <section class="solutions">
+        <div class="container">
+            <h2>なぜ今、ストリートピアノ×ラッピングなのか？</h2>
+            <div class="value-propositions">
+                <div class="value-item">
+                    <div class="icon">🌱</div>
+                    <h3>地域の景色に"ワクワク"を加える</h3>
+                    <p>日常の風景が特別な場所に変わる<br>地域の個性を視覚的に表現</p>
+                </div>
+                <div class="value-item">
+                    <div class="icon">🧒</div>
+                    <h3>子どもが一音奏で、大人が微笑む場になる</h3>
+                    <p>世代を超えた自然な交流が生まれる<br>音楽という共通言語で心をつなぐ</p>
+                </div>
+                <div class="value-item">
+                    <div class="icon">📸</div>
+                    <h3>SNSで自然に拡散し、観光コンテンツにもなる</h3>
+                    <p>インスタ映えスポットとして話題性抜群<br>地域外からの注目・来訪者増加</p>
+                </div>
+            </div>
+            <p class="core-message">「このピアノは、単なる楽器ではなく、"地域の想い"をカタチにするメディアです。」</p>
+        </div>
+    </section>
+
+    <!-- 4. サービス紹介セクション -->
+    <section class="service-intro">
+        <div class="container">
+            <h2>Wrapi®（ラピ）とは？</h2>
+            <div class="description">
+                <img src="https://via.placeholder.com/500x350/90EE90/000000?text=Wrapi+Service+Image" alt="ラッピングピアノサービス概要">
+                <div>
+                    <p>アコースティックピアノを専用の高品質フィルムでラッピングする技術です。</p>
+                    <ul>
+                        <li>🎨 見た目のデザイン性</li>
+                        <li>🎵 音質への影響も考慮</li>
+                        <li>🎹 弾いてよし・見てよし・撮ってよしの公共ピアノを実現</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="features">
+                <h3>技術的特徴</h3>
+                <ul>
+                    <li>高品質専用フィルム使用</li>
+                    <li>音質劣化を最小限に抑制</li>
+                    <li>屋外設置対応の耐久性</li>
+                    <li>メンテナンス性の高い設計</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 導入事例セクション -->
+    <section id="case-studies" class="case-studies">
+        <div class="container">
+            <h2>実際の導入例をご紹介</h2>
+            <div class="case-item">
+                <img src="https://via.placeholder.com/500x350/B0E0E6/000000?text=Shiga+Station+Example" alt="滋賀県今津駅事例">
+                <div class="text-content">
+                    <h3>事例1：滋賀県今津駅</h3>
+                    <p>駅構内の活性化と観光客誘致を目指し、地元の風景をモチーフにしたデザインでラッピングピアノを設置。</p>
+                    <ul>
+                        <li><strong>利用者の反応:</strong> 駅に活気が戻り、待ち時間を利用して演奏する人が増加。地元住民からも好評。</li>
+                        <li><strong>地域への影響・効果:</strong> SNSでの拡散が相次ぎ、地域の新たなランドマークとして定着。観光客の誘致にも貢献。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="case-item">
+                <img src="https://via.placeholder.com/500x350/FFDEAD/000000?text=Community+Facility+Example" alt="コミュニティ施設事例">
+                <div class="text-content">
+                    <h3>事例2：コミュニティ施設</h3>
+                    <p>多世代交流の促進と文化活動の拠点化のため、施設のロビーに設置。住民参加型のデザインワークショップも実施。</p>
+                    <ul>
+                        <li><strong>設置環境:</strong> 開放的なロビー空間、防音対策を一部実施。</li>
+                        <li><strong>活用方法:</strong> フリー演奏の他、月に一度のミニコンサート開催、地元の音楽サークル活動の場としても活用。</li>
+                        <li><strong>住民からの評価:</strong> 「気軽に音楽に触れられる」「子どもが喜んで通うようになった」と喜びの声多数。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="case-item">
+                <img src="https://via.placeholder.com/500x350/ADD8E6/000000?text=Education+Example" alt="教育現場事例">
+                <div class="text-content">
+                    <h3>事例3：教育現場</h3>
+                    <p>音楽教育の機会拡充と、子どもの創造性育成のため、小学校の校庭に設置。子どもたちが自由に絵を描ける「夢のピアノ」として活用。</p>
+                    <ul>
+                        <li><strong>学校・教育機関での活用:</strong> 休み時間の演奏、音楽の授業での活用、地域交流イベントでの発表の場。</li>
+                        <li><strong>子どもたちの反応:</strong> ピアノを弾くことが日課になる子、楽譜を自作する子など、音楽への関心が飛躍的に向上。</li>
+                        <li><strong>教育効果:</strong> 協調性や表現力の育成、異学年交流の促進にも寄与。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="impact-metrics">
+                <div class="metric-item">
+                    <div class="number">200%↑</div>
+                    <div class="label">SNS投稿数の増加</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number">150%↑</div>
+                    <div class="label">来場者数の変化</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number">5回↑</div>
+                    <div class="label">地域メディア露出回数</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 活用シーン・親和性セクション -->
+    <section class="affinity">
+        <div class="container">
+            <h2>地域おこし協力隊の活動とラピの親和性</h2>
+            <div class="activity-areas">
+                <div class="area-item">
+                    <div class="icon">🎭</div>
+                    <h3>文化・芸術分野</h3>
+                    <ul>
+                        <li>地元アーティストとのコラボでラッピング企画</li>
+                        <li>文化イベントの核となる装置として</li>
+                    </ul>
+                </div>
+                <div class="area-item">
+                    <div class="icon">👩‍👧</div>
+                    <h3>子育て支援分野</h3>
+                    <ul>
+                        <li>子どもと親が安心して触れ合える音の場</li>
+                        <li>子育て世代のコミュニティ形成拠点</li>
+                    </ul>
+                </div>
+                <div class="area-item">
+                    <div class="icon">🏞</div>
+                    <h3>観光・景観分野</h3>
+                    <ul>
+                        <li>フォトスポット化による集客効果</li>
+                        <li>イベント連動の集客装置として活用</li>
+                    </ul>
+                </div>
+                <div class="area-item">
+                    <div class="icon">🏡</div>
+                    <h3>空き家活用分野</h3>
+                    <ul>
+                        <li>ピアノと空間を活かした再生プロジェクトの核</li>
+                        <li>地域の新しいランドマーク創出</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. サポート内容セクション -->
+    <section class="support">
+        <div class="container">
+            <h2>Wrapiがサポートできること</h2>
+            <div class="support-sections">
+                <div class="support-block">
+                    <h3>導入支援サービス</h3>
+                    <ul>
+                        <li>導入企画相談（費用・場所・設置環境の検討）</li>
+                        <li>デザイン提案（地域の特色に合わせたカスタム）</li>
+                        <li>施工対応（全国対応・調律支援あり）</li>
+                        <li>自治体・施設向けプレゼン資料提供</li>
+                    </ul>
+                </div>
+                <div class="support-block">
+                    <h3>アフターサポート</h3>
+                    <ul>
+                        <li>定期メンテナンス</li>
+                        <li>活用方法のコンサルティング</li>
+                        <li>イベント企画支援</li>
+                        <li>効果測定・レポート作成</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. 料金・導入プロセスセクション -->
+    <section class="process">
+        <div class="container">
+            <h2>導入までの流れ</h2>
+            <div class="steps">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <h3>無料相談</h3>
+                    <p>現状ヒアリング、設置場所の確認、概算見積もり提示</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <h3>企画提案</h3>
+                    <p>デザイン案作成、詳細見積もり、設置スケジュール調整</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <h3>施工・設置</h3>
+                    <p>ピアノ搬入・設置、ラッピング施工、調律・最終調整</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <h3>運用開始</h3>
+                    <p>活用方法レクチャー、プロモーション支援、効果測定開始</p>
+                </div>
+            </div>
+
+            <div class="price-estimates">
+                <h3>料金目安</h3>
+                <p>※詳細は無料相談でお見積もりいたします。</p>
+                <ul>
+                    <li>基本パッケージ：<strong>〇〇万円〜</strong></li>
+                    <li>デザイン込みパッケージ：<strong>〇〇万円〜</strong></li>
+                    <li>フルサポートパッケージ：<strong>〇〇万円〜</strong></li>
+                </ul>
+                <p>ご予算やご要望に合わせて柔軟に対応いたします。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. よくある質問（FAQ）セクション -->
+    <section class="faq">
+        <div class="container">
+            <h2>よくある質問</h2>
+            <h3>設置・技術関連</h3>
+            <details>
+                <summary>Q: 屋外設置は可能ですか？</summary>
+                <div class="faq-content">
+                    <p>A: はい、可能です。屋外設置に対応した耐久性の高い専用フィルムを使用しており、設置場所の環境（日当たり、雨風など）を考慮した上で最適なご提案をさせていただきます。必要に応じて、簡易的な屋根やカバーの設置もご相談いただけます。</p>
+                </div>
+            </details>
+            <details>
+                <summary>Q: 音質への影響はありますか？</summary>
+                <div class="faq-content">
+                    <p>A: ラッピングはピアノの響板や弦など、音を出す主要な部分には直接影響しません。専用の薄いフィルムを使用し、音響特性への影響を最小限に抑える設計となっております。施工後の調律もサポートいたしますのでご安心ください。</p>
+                </div>
+            </details>
+            <details>
+                <summary>Q: メンテナンスはどの程度必要ですか？</summary>
+                <div class="faq-content">
+                    <p>A: 基本的な日常清掃（拭き掃除など）で美観を保てます。耐久性の高いフィルムを使用していますが、長期的な美観維持のため、年数回程度の定期点検や専門業者によるクリーニングをお勧めしております。アフターサポートでメンテナンスのご相談も承ります。</p>
+                </div>
+            </details>
+
+            <h3>予算・手続き関連</h3>
+            <details>
+                <summary>Q: 予算が限られていても導入できますか？</summary>
+                <div class="faq-content">
+                    <p>A: ご予算に応じて、デザインの範囲やサポート内容を調整したプランをご提案可能です。まずは無料相談で具体的なご予算をお聞かせください。</p>
+                </div>
+            </details>
+            <details>
+                <summary>Q: 自治体の承認は必要ですか？</summary>
+                <div class="faq-content">
+                    <p>A: 公共の場に設置する場合、基本的に自治体（市役所、教育委員会など）の許可が必要です。弊社では自治体向けのプレゼン資料提供など、申請手続きをサポートさせていただきます。</p>
+                </div>
+            </details>
+            <details>
+                <summary>Q: 補助金・助成金は活用できますか？</summary>
+                <div class="faq-content">
+                    <p>A: 地域活性化、文化振興、観光誘致などの目的で、様々な国の補助金や地方自治体の助成金が利用できる場合があります。具体的な制度については、無料相談時に情報提供や申請サポートのアドバイスも可能です。</p>
+                </div>
+            </details>
+
+            <h3>運用関連</h3>
+            <details>
+                <summary>Q: 管理責任はどうなりますか？</summary>
+                <div class="faq-content">
+                    <p>A: 設置後の管理責任は、原則として設置者（地域おこし協力隊、自治体、施設管理者など）に帰属します。ただし、Wrapiは設置場所の選定や運用ルール作りに関するアドバイス、イベント企画支援など、円滑な運用をサポートいたします。</p>
+                </div>
+            </details>
+            <details>
+                <summary>Q: イベントでの活用方法は？</summary>
+                <div class="faq-content">
+                    <p>A: ミニコンサート、音楽ワークショップ、地域のお祭りでの演奏披露、地元アーティストとのコラボイベント、ピアノにまつわるフォトコンテストなど、多様な活用が可能です。Wrapiはイベント企画支援も行っています。</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- 10. 成功ストーリーセクション -->
+    <section class="success-story">
+        <div class="container">
+            <h2>想いが形になった瞬間</h2>
+            <p class="story-intro">「かつて、『ストリートピアノなんて無理』と言われたある町で、一人の地域おこし協力隊員の想いが、地域を動かし始めています。」</p>
+
+            <h3>ある地域おこし協力隊員の挑戦</h3>
+            <div class="story-points">
+                <div class="story-point">
+                    <h4>導入前の課題</h4>
+                    <p>人通りの少ないシャッター街、若者の流出、住民の交流不足。何か新しい魅力を創出したいが、前例がなくアイデアが形にならない日々。</p>
+                </div>
+                <div class="story-point">
+                    <h4>決断のきっかけ</h4>
+                    <p>Wrapiの「地域に物語を」という理念に共感。予算やスペースの制約がある中でも、柔軟な提案と手厚いサポートを受け、導入を決意。</p>
+                </div>
+                <div class="story-point">
+                    <h4>地域住民の反応の変化</h4>
+                    <p>最初は戸惑いもあったものの、美しいピアノの登場に子どもたちが夢中に。次第に大人たちも足を止め、演奏や交流が生まれるように。</p>
+                </div>
+                <div class="story-point">
+                    <h4>現在の成果</h4>
+                    <p>SNSで話題となり、遠方からもピアノを見に来る人が増加。シャッター街に人通りが戻り、近隣店舗も賑わいを見せるようになりました。</p>
+                </div>
+            </div>
+
+            <h3>感動エピソード</h3>
+            <div class="emotion-quotes">
+                <div class="quote-item">
+                    <p>初めてピアノを触った子どもの笑顔が忘れられません。毎日弾きに来てくれるのが本当に嬉しい。</p>
+                </div>
+                <div class="quote-item">
+                    <p>昔ピアノを習っていたけれど、まさかこの歳になってまた弾けるとは。涙が止まりませんでした。</p>
+                </div>
+                <div class="quote-item">
+                    <p>SNSで演奏動画が10万回以上再生され、この町の魅力を多くの人に知ってもらうきっかけになりました！</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. 信頼性・実績セクション -->
+    <section class="trust">
+        <div class="container">
+            <h2>信頼性・実績</h2>
+            <div class="company-info">
+                <div class="company-block">
+                    <h3>Wrapiの理念・ミッション</h3>
+                    <p>「音と彩りで、地域に新たな価値と物語を創造する」をミッションに、単なる楽器の提供に留まらず、地域と人々の心をつなぐメディアとしてのラッピングピアノを提案しています。</p>
+                    <h3>代表者メッセージ</h3>
+                    <p>「吉田（担当）です。地域おこし協力隊の皆様の熱い想いを、Wrapiの技術とサポートで形にするお手伝いができれば幸いです。一緒に、未来に残る地域活性化のシンボルを作りましょう。」</p>
+                </div>
+                <div class="company-block">
+                    <h3>実績・認定</h3>
+                    <ul>
+                        <li>導入実績数：<strong>全国〇〇カ所以上</strong></li>
+                        <li>受賞歴：地域活性化貢献賞、デザインアワード受賞など</li>
+                        <li>メディア掲載実績：〇〇新聞、〇〇テレビ、WEBメディア多数</li>
+                    </ul>
+                    <h3>パートナー企業・団体</h3>
+                    <p>全国の自治体、観光協会、教育機関、地域活性化団体など</p>
+                </div>
+            </div>
+            <div class="achievements">
+                <h3>メディア掲載実績</h3>
+                <ul>
+                    <li>『〇〇新聞』「地域に根差すラッピングピアノの挑戦」掲載</li>
+                    <li>『〇〇テレビ』「話題のスポット！彩り豊かなピアノが奏でる地域交流」放映</li>
+                    <li>『Visit Japan Web』「インスタ映え！日本のストリートピアノ特集」掲載</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. 行動喚起セクション -->
+    <section id="cta-final" class="cta-final">
+        <div class="container">
+            <h2>導入を検討したい方へ</h2>
+            <p>「こんな場所にピアノがあれば…」「地域の誰かの想いを、形にできないか？」<br>そんな気持ちに、私たちWrapiは伴走します。</p>
+
+            <div class="contact-buttons">
+                <a href="#cta-final" class="btn">🎯 今すぐ無料相談を申し込む</a>
+                <a href="tel:0123456789" class="btn btn-secondary">📞 電話相談（平日9:00-18:00）</a>
+            </div>
+
+            <div class="contact-info">
+                <p>事例相談・ご提案希望はこちらへ</p>
+                <p>🌐 <a href="https://www.wrapi.jp/contact" target="_blank">wrapi.jp/contact</a></p>
+                <p>📧 <a href="mailto:torii.piano@example.com">torii.piano@example.com</a>（担当：吉田）</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. フッター -->
+    <footer>
+        <div class="container">
+            <p class="footer-message">「今ある『思い』を、未来の『はじめて』に変える── それがWrapiの役目です。🖼️ ラッピングピアノで、地域に"物語"を。」</p>
+            <ul class="footer-links">
+                <li><a href="#">会社概要</a></li>
+                <li><a href="#">プライバシーポリシー</a></li>
+                <li><a href="#">利用規約</a></li>
+                <li><a href="#">サイトマップ</a></li>
+            </ul>
+            <div class="social-links">
+                <a href="https://instagram.com" target="_blank">📸</a>
+                <a href="https://twitter.com" target="_blank">🐦</a>
+                <a href="https://youtube.com" target="_blank">▶️</a>
+            </div>
+            <p>© 2023 Wrapi®. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
